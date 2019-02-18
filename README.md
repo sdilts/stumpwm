@@ -74,6 +74,19 @@ Then, in a repl:
  (ql:quickload "cl-ppcre")
  (ql:quickload "alexandria")
 ```
+If you have installed quicklisp previously, and nothing is shown being
+downloaded after one of these commands, it means that you already have a 
+copy of the dependency somewhere on your machine. You are recommended to
+update these dependencies to fix various problems you may encounter. 
+You can update systems previously downloaded from quicklisp with one of the
+following commands:
+
+``` lisp
+;; update every system downloaded from quicklisp:
+(ql:update-all-dists)
+;; update systems individually:
+(ql:update-dist "clx")
+```
 ## Building
 
 Building stumpwm from git requires that you build the configure script:
