@@ -199,6 +199,7 @@ The Caller is responsible for setting up the input focus."
     (cond ((kmap-or-kmap-symbol-p match)
            (when grab
              (grab-pointer (current-screen)))
+           ;; read-key-no-modifiers is where the blocking occurs:
            (let* ((code-state (read-key-no-modifiers))
                   (code (car code-state))
                   (state (cdr code-state)))

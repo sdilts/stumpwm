@@ -231,11 +231,13 @@ Now when you type C-t C-z, you'll see the text ``Zzzzz...'' pop up."
   (or (kmap-p x)
       (kmap-symbol-p x)))
 
+(defun dereference-kmap (m)
+  (if (kmap-symbol-p m)
+      (symbol-value m)
+      m))
+
 (defun dereference-kmaps (kmaps)
-  (mapcar (lambda (m)
-            (if (kmap-symbol-p m)
-                (symbol-value m)
-                m))
+  (mapcar #'dereference-kmap
           kmaps))
 
 (defun search-kmap (command keymap &key (test 'equal))
